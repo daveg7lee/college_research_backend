@@ -1,5 +1,8 @@
+import axios from "axios";
+import cheerio from "cheerio";
+
 async function routes(fastify, options) {
-  fastify.get("/", async function handler(request, reply) {
+  fastify.get("/:id", async function handler(request, reply) {
     if (!request.params.id) {
       reply.send("Id is required");
       return;

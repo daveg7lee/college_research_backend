@@ -10,14 +10,9 @@
     "fastify": "^4.23.2"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node api/serverless.js"
+    "vercel": "vercel dev"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.20",
-    "@babel/node": "^7.22.19",
-    "@babel/preset-env": "^7.22.20",
-    "@types/node": "^20.6.2",
-    "babel-node": "^0.0.1-security",
-    "nodemon": "^3.0.1"
+    "@vercel/node": "^1.15.4"
   }
 }
