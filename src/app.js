@@ -1,5 +1,5 @@
-import axios from "axios/dist/node/axios.cjs";
-import cheerio from "cheerio";
+const axios = require("axios/dist/node/axios.cjs");
+const cheerio = require("cheerio");
 
 async function routes(fastify, options) {
   fastify.get("/:id", async function handler(request, reply) {
