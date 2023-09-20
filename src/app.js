@@ -1,4 +1,4 @@
-const axios = require("axios/dist/node/axios.cjs");
+const axios = require("axios");
 const cheerio = require("cheerio");
 
 async function routes(fastify, options) {
@@ -13,6 +13,9 @@ async function routes(fastify, options) {
     );
 
     const html = cheerio.load(res.data);
+    const name = html(
+      ".dashboard > .collegedash > div > span > .headerlg"
+    ).text();
     const totalFee = html(
       `#divctl00_cphCollegeNavBody_ucInstitutionMain_ctl00 > .tabconstraint > table.tabular > tbody > tr.level1indent:nth-child(20) > td:nth-child(5)`
     ).text();
@@ -47,10 +50,11 @@ async function routes(fastify, options) {
         : "Blind (not considered)";
 
     reply.send({
-      total_fee: totalFee,
-      accpetance_rate: `${accpetanceRate.split("%")[0]}%`,
-      sat_required: SAT,
-      gpa_required: GPA,
+      이름: name,
+      등록금: totalFee.replace(",", ""),
+      합격률: `${accpetanceRate.split("%")[0]}%`,
+      SAT_필수여부: SAT,
+      GPA_필수여부: GPA,
     });
   });
 }

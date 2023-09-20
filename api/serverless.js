@@ -6,11 +6,13 @@ dotenv.config();
 
 // Require the framework
 import Fastify from "fastify";
+import cors from "@fastify/cors";
 
 // Instantiate Fastify with some config
 const app = Fastify({
   logger: true,
 });
+app.register(cors, { origin: "*" });
 
 // Register your application as a normal plugin.
 app.register(import("../src/app.js"));
