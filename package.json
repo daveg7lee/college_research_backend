@@ -15,5 +15,6 @@
   },
   "devDependencies": {
     "@vercel/node": "^1.15.4"
-  }
+  },
+  "type": "module"
 }

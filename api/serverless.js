@@ -15,7 +15,7 @@ const app = Fastify({
 app.register(cors, { origin: "*" });
 
 // Register your application as a normal plugin.
-app.register(import("../src/app.js"));
+app.register(import("../src/app.js"), { prefix: "/" });
 
 export default async (req, res) => {
   await app.ready();
